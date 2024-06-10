@@ -11,6 +11,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height){
 
 void applyRandomColor() {
     // apply a random color to the screen
+    srand(time(0));
     float redVal = static_cast<float> (rand()) / static_cast<float>(RAND_MAX);
     float blueVal = static_cast<float> (rand()) / static_cast<float>(RAND_MAX);
     float greenVal = static_cast<float> (rand()) / static_cast<float>(RAND_MAX);
