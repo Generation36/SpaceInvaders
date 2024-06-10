@@ -9,13 +9,26 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height){
   glViewport(0, 0, width, height);
 }
 
+void applyRandomColor() {
+    // apply a random color to the screen
+    float redVal = static_cast<float> (rand()) / static_cast<float>(RAND_MAX);
+    float blueVal = static_cast<float> (rand()) / static_cast<float>(RAND_MAX);
+    float greenVal = static_cast<float> (rand()) / static_cast<float>(RAND_MAX);
+    glClearColor(redVal, blueVal, greenVal, 1.0f);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
 void processInput(GLFWwindow* window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
     std::this_thread::sleep_for(std::chrono::seconds(1));
   }
+  else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS) 
+  {
+    applyRandomColor();
+  }
   
-
 }
 
 int main() {
